@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+
+
+.ChatContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75vh;
+  border-radius: 14px;
+  border: 3px solid black;
+  margin-top: 2rem;
+  margin-bottom: 20px;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  height: 8vh;
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #1f2937;
+}
+
+.chat-header h4 {
+  color: white;
+  margin-left: 3rem;
+  align-items: center;
+  margin-right: 20px;
+  font-family: 'Quattrocento Sans';
+  font-size: 25px;
+  
+}
+
+.chat-header h5 {
+  color: white;
+  margin-left: 3rem;
+  cursor: default;
+  font-family: 'Quattrocento Sans';
+}
+
+.chat-body {
+  width: 45vh;
+  max-height: 52vh;
+  overflow: auto;
+}
+
+.chat-body::-webkit-scrollbar {
+  display: none;
+}
+
+.icon-circle {
+  border-radius: 40%;
+  border: 2px solid white;
+  padding: 5px;
+  display: inline-block;
+}
+
+.active-indicator {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px;
+}
+
+.text-input {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-right: 0px;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color:black;
+}
+
+.tw-text-quattrocento-sans {
+  font-family: 'Quattrocento Sans';
+}
+
+.tooltip-custom {
+  font-size: 24px;
+ }
+
+
+
+
+/* chatcss.css */
+
+/* User Message Styles */
+.user-message {
+  background-color: #3498db; /* User message background color */
+  color: #ffffff; /* User message text color */
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  align-self: flex-end; /* Align user messages to the right */
+}
+
+/* Bot Message Styles */
+.bot-message {
+  background-color: #2ecc71; /* Bot message background color */
+  color: #ffffff; /* Bot message text color */
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  align-self: flex-start; /* Align bot messages to the left */
+}
+
+/* Additional Styles */
+/* Add any additional styles or modifications here */
+.chat-icon-opened {
+  transform: scale(1.5);
+ }
+ 
+ .chat-icon-closed {
+  transform: scale(1);
+ }
+ 
+ @keyframes shake {
+   0% {
+     transform: translate(10px, 10px) rotate(0deg);
+  }
+   10% {
+     transform: translate(-1px, 1px) rotate(-10deg);
+  }
+   20% {
+     transform: translate(-1px, -1px) rotate(10deg);
+  }
+   30% {
+     transform: translate(1px, 1px) rotate(10deg);
+  }
+   40% {
+     transform: translate(1px, -1px) rotate(10deg);
+  }
+   50% {
+     transform: translate(-1px, 1px) rotate(-10deg);
+  }
+ }
+ 
+ .shake-effect {
+  animation: shake 1s;
+ }

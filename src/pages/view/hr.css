@@ -1,0 +1,44 @@
+.body{
+    
+}
+
+.container {
+  padding: 20px;
+ 
+}
+
+.table-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+}
+
+table {
+  border-collapse: collapse;
+  width: 300%;
+}
+
+th, td {
+  border: 1px solid #161414;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1e08e4;
+  font-weight: bold;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr {
+  background-color: white;
+}
+
+.selected {
+  background-color: rgb(51, 175, 216);
+}
+

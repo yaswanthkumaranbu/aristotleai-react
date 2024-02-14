@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply tw-bg-theme-black tw-text-white tw-overflow-x-hidden;
+    word-break: break-all;
+}

@@ -1,0 +1,55 @@
+{
+  "name": "AristotleAI",
+  "version": "1.0.0",
+  "description": " Aristotle AI ",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.15.2",
+    "@mui/material": "^5.15.2",
+    "@nextui-org/react": "^2.2.9",
+    "axios": "^1.6.2",
+    "babel-plugin-macros": "^3.1.0",
+    "final-form": "^4.20.10",
+    "jwt-decode": "^4.0.0",
+    "material-react-table": "^1.8.0",
+    "randomcolor": "^0.6.2",
+    "react": "^18.2.0",
+    "react-chatbot-kit": "^2.2.2",
+    "react-dom": "^18.2.0",
+    "react-final-form": "^6.5.9",
+    "react-google": "^0.0.3",
+    "react-google-login": "^5.2.2",
+    "react-icons": "^4.11.0",
+    "react-scripts": "5.0.1",
+    "shortid": "^2.2.16",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.6.1",
+    "tailwind-scrollbar": "^3.0.5",
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "build-live": "set  GENERATE_SOURCEMAP=false  &&  react-scripts build",
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

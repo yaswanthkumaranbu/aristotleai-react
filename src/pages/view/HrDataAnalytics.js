@@ -57,6 +57,7 @@ const HrDataAnalytics = () => {
           <table>
             <thead>
               <tr>
+                {<th></th>}
                 {csvData[0].map((header, index) => (
                   <th key={index}>{header}</th>
                 ))}
@@ -68,9 +69,6 @@ const HrDataAnalytics = () => {
                   key={rowIndex}
                   className={selectedRows.includes(rowIndex) ? "selected" : ""}
                 >
-                  {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
-                  ))}
                   <td>
                     <input
                       type="checkbox"
@@ -78,6 +76,9 @@ const HrDataAnalytics = () => {
                       checked={selectedRows.includes(rowIndex)}
                     />
                   </td>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex}>{cell}</td>
+                  ))}
                 </tr>
               ))}
             </tbody>

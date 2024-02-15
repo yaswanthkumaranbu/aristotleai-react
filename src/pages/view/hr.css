@@ -1,33 +1,74 @@
-.body{
-    
+/* Styles for the body if needed */
+body {
+  font-family: Arial, sans-serif; /* Set a default font */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 .container {
   padding: 20px;
- 
+  position: relative; /* Add position relative */
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.heading h1 {
+  font-size: 36px;
+  color: #3ce9f6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.heading h1:before,
+.heading h1:after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #1e08e4;
+  position: absolute;
+  bottom: -6px;
+}
+
+.heading h1:before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.heading h1:after {
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .table-container {
-  width: 100%;
-  height: 100%;
+  width: 1120px;
+  height: 500px;
   overflow-y: auto;
-  
+  position: relative; /* Added position relative */
 }
 
 table {
-    
-    border-collapse: collapse;
-    width: 300%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-th, td {
-    border: 1px solid #161414;
-    text-align: left;
-    padding: 20px;
+th,
+td {
+  border: 1px solid #161414;
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap; /* Prevent wrapping of table cell content */
+  overflow: hidden; /* Hide content that overflows cell */
+  text-overflow: ellipsis; /* Display an ellipsis (...) to represent overflow */
 }
 
 th {
-  background-color: #1e08e4;
+  background-color: #f3c370;
   font-weight: bold;
   color: white;
   position: sticky;
@@ -42,4 +83,126 @@ tbody tr {
 .selected {
   background-color: rgb(51, 175, 216);
 }
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #6bd0f4;
+  border: 2px solid #0c0c0c;
+  width: auto; /* Auto width */
+  height: auto; /* Auto height */
+  max-height: 100%; /* Maximum height */
+  z-index: 9999;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
 
+
+.popup-content {
+  text-align: left;
+}
+
+.popup-title {
+  color: #030303; /* Title color */
+  margin-bottom: 10px; /* Add some space below the title */
+}
+.popup-body {
+  max-height: 200px; /* Adjust as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling */
+   /* Prevent wrapping of content */
+  display: flex; /* Use flexbox to ensure proper alignment */
+  
+}
+
+
+.close {
+  color: #0a0a0b; /* Changed the color to match the header */
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table-container table {
+  table-layout: fixed;
+  width: auto;
+}
+
+/* Modify the background color of frozen column cells */
+.table-container th:first-child,
+.table-container td:first-child,
+.table-container th:nth-child(2),
+.table-container td:nth-child(2),
+.table-container th:nth-child(3),
+.table-container td:nth-child(3) {
+  position: sticky;
+  left: 0;
+  z-index: 2; /* Increase z-index to make the titles visible above the frozen columns */
+  background-color: #ffffff; /* Change the background color of frozen column cells to white */
+}
+
+/* Adjust the text color of frozen column titles to match the header */
+.table-container th:first-child,
+.table-container th:nth-child(2),
+.table-container th:nth-child(3),
+.table-container td:first-child,
+.table-container td:nth-child(2),
+.table-container td:nth-child(3) {
+  padding-left: 8px;
+  position: sticky;
+  background-color:white;
+
+}
+.table-container th:first-child,
+.table-container th:nth-child(2),
+.table-container th:nth-child(3)
+{
+  background-color: #f3c370; /* Changed the color to match the header */
+
+}
+
+/* Pagination styles */
+.pagination-container {
+  width: 100%; /* Take full width */
+  text-align: center; /* Center the pagination */
+  margin-top: 20px; /* Add some space between table and pagination */
+}
+
+.pagination {
+  display: inline-block; /* Display buttons in a row */
+}
+
+.pagination button {
+  cursor: pointer;
+  background-color: #f3c370;
+  color: white;
+  border: none;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.pagination button.active {
+  background-color: #000000; /* Style active page button */
+}
+
+/* Basic styling for the input */
+.search {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px; /* Adjust the width as needed */
+  position: relative;
+  left: 920px;
+}

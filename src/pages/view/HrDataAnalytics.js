@@ -11,7 +11,7 @@ const HrDataAnalytics = () => {
   const [popupWidth, setPopupWidth] = useState(400);
   const [popupHeight, setPopupHeight] = useState(200);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(11);
+  const [itemsPerPage, setItemsPerPage] = useState(13);
   const [searchQuery, setSearchQuery] = useState("");
   const tableRef = useRef(null);
   const popupRef = useRef(null); // Ref for the popup
@@ -91,7 +91,9 @@ const HrDataAnalytics = () => {
   };
 
   const handleDropdownButtonClick = (rowIndex) => {
-    const filteredIndex = csvData.findIndex(row => row[0] === currentItems[rowIndex][0]); // Find the index of the row in the original data
+    const filteredIndex = csvData.findIndex(
+      (row) => row[0] === currentItems[rowIndex][0]
+    ); // Find the index of the row in the original data
     setRowData(csvData[filteredIndex]); // Set the rowData to the corresponding row from the original data
     setShowPopup(true); // Show the popup
   };
@@ -111,7 +113,10 @@ const HrDataAnalytics = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage + 1;
-  const paginatedItems = currentItems.slice(indexOfFirstItem - 1, indexOfLastItem);
+  const paginatedItems = currentItems.slice(
+    indexOfFirstItem - 1,
+    indexOfLastItem
+  );
 
   // Pagination Logic
   const pageNumbers = [];
@@ -122,10 +127,18 @@ const HrDataAnalytics = () => {
   const renderPageNumbers = pageNumbers
     .filter(
       (number) =>
-        number === 1 || number === currentPage || number === currentPage - 1 || number === currentPage + 1 || number === currentPage + 2
+        number === 1 ||
+        number === currentPage ||
+        number === currentPage - 1 ||
+        number === currentPage + 1 ||
+        number === currentPage + 2
     )
     .map((number) => (
-      <button key={number} onClick={() => paginate(number)} className={number === currentPage ? "active" : ""}>
+      <button
+        key={number}
+        onClick={() => paginate(number)}
+        className={number === currentPage ? "active" : ""}
+      >
         {number}
       </button>
     ));
@@ -135,11 +148,15 @@ const HrDataAnalytics = () => {
   };
 
   const nextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(currentItems.length / itemsPerPage)));
+    setCurrentPage((prevPage) =>
+      Math.min(prevPage + 1, Math.ceil(currentItems.length / itemsPerPage))
+    );
   };
 
   const doubleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 2, Math.ceil(currentItems.length / itemsPerPage)));
+    setCurrentPage((prevPage) =>
+      Math.min(prevPage + 2, Math.ceil(currentItems.length / itemsPerPage))
+    );
   };
 
   const prevPage = () => {
@@ -152,8 +169,7 @@ const HrDataAnalytics = () => {
 
   return (
     <div className="container">
-      
-      <div className="search-container">
+      {/* <div className="search-container">
         <input
           type="text"
           placeholder="Search..."
@@ -161,7 +177,20 @@ const HrDataAnalytics = () => {
           onChange={handleSearchChange}
           className="search"
         />
+      </div> */}
+      <div className="wrapper">
+        <div className="search-icon">
+          <input
+            className="search-circle"
+            type="text"
+            placeholder=" 🔍"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </div>
       </div>
+      <br />
+      <br />
       <br />
       {error && <p>Error: {error}</p>}
       {csvData.length > 0 && (
@@ -179,16 +208,30 @@ const HrDataAnalytics = () => {
               {paginatedItems.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  className={selectedRows.includes(rowIndex + indexOfFirstItem - 1) ? "selected" : ""}
+                  className={
+                    selectedRows.includes(rowIndex + indexOfFirstItem - 1)
+                      ? "selected"
+                      : ""
+                  }
                 >
                   <td>
-                    <button onClick={() => handleDropdownButtonClick(rowIndex + indexOfFirstItem - 1)}>
+                    <button
+                      onClick={() =>
+                        handleDropdownButtonClick(
+                          rowIndex + indexOfFirstItem - 1
+                        )
+                      }
+                    >
                       🔻
                     </button>
                     <input
                       type="checkbox"
-                      onChange={() => handleCheckboxChange(rowIndex + indexOfFirstItem - 1)}
-                      checked={selectedRows.includes(rowIndex + indexOfFirstItem - 1)}
+                      onChange={() =>
+                        handleCheckboxChange(rowIndex + indexOfFirstItem - 1)
+                      }
+                      checked={selectedRows.includes(
+                        rowIndex + indexOfFirstItem - 1
+                      )}
                     />
                   </td>
                   {row.map((cell, cellIndex) => (
@@ -210,22 +253,26 @@ const HrDataAnalytics = () => {
         </div>
       </div>
       {showPopup && (
-  <div className="popup" ref={popupRef} style={{ width:` ${popupWidth}px`, height: `${popupHeight}px` }}>
-    <div className="popup-content">
-      <span className="close" onClick={() => setShowPopup(false)}>
+        <div
+          className="popup"
+          ref={popupRef}
+          style={{ width: ` ${popupWidth}px`, height: `${popupHeight}px` }}
+        >
+          <div className="popup-content">
+            <h3>Details</h3>
+            {/* <span className="close" onClick={() => setShowPopup(false)}>
         &times;
-      </span>
-      <div className="popup-body">
-        <ul>
-          {rowData.map((data, index) => (
-            <li key={index}>{data}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
-)}
-
+      </span> */}
+            <div className="popup-body">
+              <ul>
+                {rowData.map((data, index) => (
+                  <li key={index}>{data}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

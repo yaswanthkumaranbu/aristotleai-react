@@ -47,7 +47,7 @@ body {
 
 .table-container {
   width: 1120px;
-  height: 500px;
+  height: 600px;
   overflow-y: auto;
   position: relative; /* Added position relative */
 }
@@ -68,7 +68,7 @@ td {
 }
 
 th {
-  background-color: #f3c370;
+  background-color:#324258;
   font-weight: bold;
   color: white;
   position: sticky;
@@ -88,7 +88,7 @@ tbody tr {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #6bd0f4;
+  background-color: white;
   border: 2px solid #0c0c0c;
   width: auto; /* Auto width */
   height: auto; /* Auto height */
@@ -119,8 +119,8 @@ tbody tr {
 
 
 .close {
-  color: #0a0a0b; /* Changed the color to match the header */
-  float: right;
+  color: #324258; /* Changed the color to match the header */
+  float:right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -167,7 +167,7 @@ tbody tr {
 .table-container th:nth-child(2),
 .table-container th:nth-child(3)
 {
-  background-color: #f3c370; /* Changed the color to match the header */
+  background-color: #324258; /* Changed the color to match the header */
 
 }
 
@@ -184,7 +184,7 @@ tbody tr {
 
 .pagination button {
   cursor: pointer;
-  background-color: #f3c370;
+  background-color: #324258;
   color: white;
   border: none;
   margin-right: 5px;
@@ -193,7 +193,7 @@ tbody tr {
 }
 
 .pagination button.active {
-  background-color: #000000; /* Style active page button */
+  background-color: #496080; /* Style active page button */
 }
 
 /* Basic styling for the input */
@@ -206,3 +206,41 @@ tbody tr {
   position: relative;
   left: 920px;
 }
+
+
+
+
+.wrapper {
+  position: relative;
+  left: 0%;
+}
+.search-circle {
+  border: 4px inside #080;
+  border-color: #439bc6;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ddd;
+  box-shadow: 3px 2px 2px rgba(21, 153, 219, 0.5);
+  transition: all 1s ease;
+  float: left;
+  padding: 10px;
+}
+
+.search-circle:hover,
+.search-circle:focus {
+  width: 33%;
+  border-radius: 3%;
+}
+/* .search-bar {
+  position: relative;
+  float: left;
+  border-left: 3px solid #000;
+  border-right: 2px solid #ddd;
+  height: 35px;
+  background: #ddd;
+  left: -0.5%;
+  top: 70px;
+  transform: rotate(-45deg);
+  box-shadow: 0 1px 2px 1px rgba(239, 33, 85, 0.5);
+} */

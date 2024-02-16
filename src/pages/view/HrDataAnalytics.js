@@ -1,21 +1,27 @@
+// Importing necessary dependencies and styles
 import React, { useState, useEffect, useRef } from "react";
 import "./hr.css";
 import CSV from "./techstars4.csv";
 
+// Main component function
 const HrDataAnalytics = () => {
-  const [csvData, setCsvData] = useState([]);
-  const [error, setError] = useState(null);
-  const [selectedRows, setSelectedRows] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [rowData, setRowData] = useState([]);
-  const [popupWidth, setPopupWidth] = useState(400);
-  const [popupHeight, setPopupHeight] = useState(200);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(13);
-  const [searchQuery, setSearchQuery] = useState("");
-  const tableRef = useRef(null);
+  // State variables
+  const [csvData, setCsvData] = useState([]); // To store CSV data
+  const [error, setError] = useState(null); // To handle errors
+  const [selectedRows, setSelectedRows] = useState([]); // To track selected rows
+  const [showPopup, setShowPopup] = useState(false); // To control popup visibility
+  const [rowData, setRowData] = useState([]); // To store data for the selected row
+  const [popupWidth, setPopupWidth] = useState(400); // Width of the popup
+  const [popupHeight, setPopupHeight] = useState(200); // Height of the popup
+  const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
+  const [itemsPerPage, setItemsPerPage] = useState(13); // Items to display per page
+  const [searchQuery, setSearchQuery] = useState(""); // Search input value
+
+  // Refs for DOM elements
+  const tableRef = useRef(null); // Ref for the table
   const popupRef = useRef(null); // Ref for the popup
 
+  // Fetch CSV data on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +40,7 @@ const HrDataAnalytics = () => {
     fetchData();
   }, []);
 
+  // Calculate and update popup dimensions on row data change or window resize
   useEffect(() => {
     const calculatePopupDimensions = () => {
       const maxPopupWidth = 400;
@@ -57,7 +64,7 @@ const HrDataAnalytics = () => {
     };
   }, [rowData]);
 
-  // Function to handle outside click
+  // Function to handle outside click to close the popup
   const handleClickOutside = (event) => {
     if (popupRef.current && !popupRef.current.contains(event.target)) {
       setShowPopup(false);
@@ -65,7 +72,7 @@ const HrDataAnalytics = () => {
   };
 
   useEffect(() => {
-    // Add event listener when the popup is shown
+    // Add or remove event listener based on popup visibility
     if (showPopup) {
       window.addEventListener("mousedown", handleClickOutside);
     } else {
@@ -77,11 +84,13 @@ const HrDataAnalytics = () => {
     };
   }, [showPopup]);
 
+  // Function to parse CSV data into an array
   const parseCSV = (csvData) => {
     const rows = csvData.split("\n");
     return rows.map((row) => row.split(","));
   };
 
+  // Function to handle checkbox change for row selection
   const handleCheckboxChange = (rowIndex) => {
     if (selectedRows.includes(rowIndex)) {
       setSelectedRows(selectedRows.filter((row) => row !== rowIndex));
@@ -90,19 +99,22 @@ const HrDataAnalytics = () => {
     }
   };
 
+  // Function to handle dropdown button click for displaying popup
   const handleDropdownButtonClick = (rowIndex) => {
     const filteredIndex = csvData.findIndex(
       (row) => row[0] === currentItems[rowIndex][0]
-    ); // Find the index of the row in the original data
-    setRowData(csvData[filteredIndex]); // Set the rowData to the corresponding row from the original data
-    setShowPopup(true); // Show the popup
+    );
+    setRowData(csvData[filteredIndex]);
+    setShowPopup(true);
   };
 
+  // Function to handle search input change
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1);
   };
 
+  // Logic for pagination
   let currentItems = csvData;
 
   if (searchQuery) {
@@ -124,6 +136,7 @@ const HrDataAnalytics = () => {
     pageNumbers.push(i);
   }
 
+  // Render pagination buttons
   const renderPageNumbers = pageNumbers
     .filter(
       (number) =>
@@ -143,10 +156,12 @@ const HrDataAnalytics = () => {
       </button>
     ));
 
+  // Function to handle page change
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  // Functions to navigate to the next and previous pages
   const nextPage = () => {
     setCurrentPage((prevPage) =>
       Math.min(prevPage + 1, Math.ceil(currentItems.length / itemsPerPage))
@@ -167,22 +182,16 @@ const HrDataAnalytics = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 2, 1));
   };
 
+  // Styling for a button
   const button = {
     padding: "0px 10px",
     fontSize: "8px",
   };
 
+  // JSX for the component
   return (
     <div className="container">
-      {/* <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="search"
-        />
-      </div> */}
+      {/* Search input */}
       <div className="wrapper">
         <div className="search-icon">
           <input
@@ -197,10 +206,13 @@ const HrDataAnalytics = () => {
       <br />
       <br />
       <br />
+      {/* Display error message if any */}
       {error && <p>Error: {error}</p>}
+      {/* Display the table if CSV data is available */}
       {csvData.length > 0 && (
         <div className="table-container" ref={tableRef}>
           <table>
+            {/* Table header */}
             <thead>
               <tr>
                 <th>Select</th>
@@ -209,6 +221,7 @@ const HrDataAnalytics = () => {
                 ))}
               </tr>
             </thead>
+            {/* Table body */}
             <tbody>
               {paginatedItems.map((row, rowIndex) => (
                 <tr
@@ -219,6 +232,7 @@ const HrDataAnalytics = () => {
                       : `${rowIndex % 2 == 0 ? "even-row" : "odd-row"}`
                   }
                 >
+                  {/* Row actions - dropdown button and checkbox */}
                   <td>
                     <button
                       style={button}
@@ -240,6 +254,7 @@ const HrDataAnalytics = () => {
                       )}
                     />
                   </td>
+                  {/* Display each cell in the row */}
                   {row.map((cell, cellIndex) => (
                     <td
                       className={rowIndex % 2 == 0 ? "even-row" : "odd-row"}
@@ -254,6 +269,7 @@ const HrDataAnalytics = () => {
           </table>
         </div>
       )}
+      {/* Pagination controls */}
       <div className="pagination-container">
         <div className="pagination">
           <button onClick={doublePrevPage}>&laquo;&laquo;</button>
@@ -263,6 +279,7 @@ const HrDataAnalytics = () => {
           <button onClick={doubleNextPage}>&raquo;&raquo;</button>
         </div>
       </div>
+      {/* Display the popup if showPopup state is true */}
       {showPopup && (
         <div
           className="popup"
@@ -271,9 +288,7 @@ const HrDataAnalytics = () => {
         >
           <div className="popup-content">
             <h3>Details</h3>
-            {/* <span className="close" onClick={() => setShowPopup(false)}>
-        &times;
-      </span> */}
+            {/* Display details of the selected row */}
             <div className="popup-body">
               <ul>
                 {rowData.map((data, index) => (
@@ -288,4 +303,5 @@ const HrDataAnalytics = () => {
   );
 };
 
+// Exporting the component
 export default HrDataAnalytics;

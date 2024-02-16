@@ -167,6 +167,11 @@ const HrDataAnalytics = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 2, 1));
   };
 
+  const button = {
+    padding: "0px 10px",
+    fontSize: "8px",
+  };
+
   return (
     <div className="container">
       {/* <div className="search-container">
@@ -211,11 +216,12 @@ const HrDataAnalytics = () => {
                   className={
                     selectedRows.includes(rowIndex + indexOfFirstItem - 1)
                       ? "selected"
-                      : ""
+                      : `${rowIndex % 2 == 0 ? "even-row" : "odd-row"}`
                   }
                 >
                   <td>
                     <button
+                      style={button}
                       onClick={() =>
                         handleDropdownButtonClick(
                           rowIndex + indexOfFirstItem - 1
@@ -235,7 +241,12 @@ const HrDataAnalytics = () => {
                     />
                   </td>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
+                    <td
+                      className={rowIndex % 2 == 0 ? "even-row" : "odd-row"}
+                      key={cellIndex}
+                    >
+                      {cell}
+                    </td>
                   ))}
                 </tr>
               ))}

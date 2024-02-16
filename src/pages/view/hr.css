@@ -5,6 +5,8 @@ body {
   padding: 0; /* Remove default padding */
 }
 
+
+
 .container {
   padding: 20px;
   position: relative; /* Add position relative */
@@ -57,9 +59,9 @@ table {
   width: 100%;
 }
 
-th,
-td {
-  border: 1px solid #161414;
+table th,
+table td {
+  border: 1px solid #324258;
   padding: 8px;
   text-align: left;
   white-space: nowrap; /* Prevent wrapping of table cell content */
@@ -101,12 +103,13 @@ tbody tr {
 
 
 .popup-content {
-  text-align: left;
+  text-align:left;
 }
 
 .popup-title {
   color: #030303; /* Title color */
-  margin-bottom: 10px; /* Add some space below the title */
+  margin-bottom: 10px; 
+  
 }
 .popup-body {
   max-height: 200px; /* Adjust as needed */
@@ -232,15 +235,11 @@ tbody tr {
   width: 33%;
   border-radius: 3%;
 }
-/* .search-bar {
-  position: relative;
-  float: left;
-  border-left: 3px solid #000;
-  border-right: 2px solid #ddd;
-  height: 35px;
-  background: #ddd;
-  left: -0.5%;
-  top: 70px;
-  transform: rotate(-45deg);
-  box-shadow: 0 1px 2px 1px rgba(239, 33, 85, 0.5);
-} */
+
+.even-row {
+  background-color: #f2f2f2; /* Set the background color for even rows */
+}
+
+.odd-row {
+  background-color: #ffffff; /* Set the background color for odd rows */
+}

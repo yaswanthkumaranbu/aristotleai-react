@@ -149,21 +149,19 @@ tbody tr {
 .table-container th:nth-child(3),
 .table-container td:nth-child(3) {
   position: sticky;
+  padding-left: 0.5vw;
   left: 0;
   z-index: 2; /* Increase z-index to make the titles visible above the frozen columns */
   background-color: #ffffff; /* Change the background color of frozen column cells to white */
 }
 
 /* Adjust the text color of frozen column titles to match the header */
-.table-container th:first-child,
-.table-container th:nth-child(2),
-.table-container th:nth-child(3),
+
 .table-container td:first-child,
 .table-container td:nth-child(2),
 .table-container td:nth-child(3) {
-  padding-left: 0.5vw;
-  position: sticky;
-  background-color:white;
+  z-index: 0;
+
 
 }
 .table-container th:first-child,
@@ -173,6 +171,7 @@ tbody tr {
   background-color: #324258; /* Changed the color to match the header */
 
 }
+
 
 /* Pagination styles */
 .pagination-container {

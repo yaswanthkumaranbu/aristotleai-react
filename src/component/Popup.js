@@ -7,7 +7,7 @@ function Popup(props)
         <div className="popup">
             <div className="popup-inner">
                 <img  src="../../assets/img/brand/logo.png" style={{height:'40px',marginLeft:'18rem'}}/>
-                <button className="close-btn" onClick={()=> props.setTrigger(false)} >X</button>
+                {/* <button className="close-btn" onClick={()=> props.setTrigger(false)} >X</button> */}
                 { props.children }
             </div>
 

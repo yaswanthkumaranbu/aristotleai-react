@@ -1,4 +1,5 @@
 .popup{
+
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +11,7 @@
     justify-content: center;
     align-items: center;
 }
-.popup-inner{
+.popup-inner{   
     position: relative;
     padding: 20px;
     width: 100%;
@@ -29,11 +30,10 @@
     
 }
 .notify{
-    position: fixed;
+    position:fixed;
     top: 0;
     left: 0;
     width:180vh;
-    background-color: rgba(0, 0, 0, 0.2);
     height: 100vh;
     margin-left: 16.2rem;
     padding-left: 29rem;
@@ -42,16 +42,12 @@
     align-items: center;
     padding-bottom: 35rem;
 }
-.notify-inner{
-    position: relative;
-    padding: 36px;
-    width: 60vh;
-    height: 25vh;
-    margin-top: 10rem;
-    margin-right: 3rem;
-    max-width: 40rem; 
-    background-color: rgb(46, 43, 43);
+.notify-inner
+{
+   
+
 }
+
 
 .notify-inner h4{
     width: 100%;

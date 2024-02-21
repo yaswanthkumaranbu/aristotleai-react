@@ -122,13 +122,19 @@ const HrDataAnalytics = () => {
       row.some((cell) => cell.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   }
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage + 1;
-  const paginatedItems = currentItems.slice(
-    indexOfFirstItem - 1,
+var paginatedItems = currentItems.slice(
+    indexOfFirstItem,
     indexOfLastItem
   );
+
+  if (searchQuery) {
+     paginatedItems = currentItems.slice(
+      indexOfFirstItem - 1,
+      indexOfLastItem
+    );
+  } 
 
   // Pagination Logic
   const pageNumbers = [];

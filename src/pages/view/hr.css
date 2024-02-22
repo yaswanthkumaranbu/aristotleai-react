@@ -10,7 +10,8 @@ body {
 .container {
   padding: 2%;
   position: relative; /* Add position relative */
-}
+
+} 
 
 .heading {
   text-align: center;
@@ -48,21 +49,33 @@ body {
 }
 
 .table-container {
-  width: 100%; /* Responsive width */
-  max-height: 70vh; /* Responsive height */
-  overflow-y: auto;
+  width: 130%; /* Responsive width */
+  max-height: 80vh; /* Responsive height */
+  overflow-y:auto;
   position: relative;
-  border: 0.5vh solid #324258;
+  margin-left: -15%;
+  border:5px solid  #cdc9c9;
+
+
+  /* border: 0.5vh solid #324258; */
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
+  border:1px solid  #cdc9c9; 
+}
+
+.even-row ,.odd-row
+{
+ padding-right: 100px;
+}
+
+table td, table th{
+  border-bottom:1px solid  #cdc9c9;
 }
 
 table th,table td {
-  border: 1px solid #324258;
-  padding: 0.5vw; /* Responsive padding */
+  padding: 1vw; /* Responsive padding */
   text-align: left;
   white-space: nowrap; /* Prevent wrapping of table cell content */
   overflow: hidden; /* Hide content that overflows cell */
@@ -70,7 +83,7 @@ table th,table td {
 }
 
 th {
-  background-color:#324258;
+  background-color: #ffffff; 
   font-weight: bold;
   color: white;
   position: sticky;
@@ -141,21 +154,6 @@ tbody tr {
   width: auto;
 }
 
-/* Modify the background color of frozen column cells */
-.table-container th:first-child,
-.table-container td:first-child,
-.table-container th:nth-child(2),
-.table-container td:nth-child(2),
-.table-container th:nth-child(3),
-.table-container td:nth-child(3) {
-  position: sticky;
-  padding-left: 0.5vw;
-  left: 0;
-  z-index: 2; /* Increase z-index to make the titles visible above the frozen columns */
-  background-color: #ffffff; /* Change the background color of frozen column cells to white */
-}
-
-/* Adjust the text color of frozen column titles to match the header */
 
 .table-container td:first-child,
 .table-container td:nth-child(2),
@@ -168,7 +166,7 @@ tbody tr {
 .table-container th:nth-child(2),
 .table-container th:nth-child(3)
 {
-  background-color: #324258; /* Changed the color to match the header */
+  background-color: #ffffff; 
 
 }
 
@@ -178,6 +176,7 @@ tbody tr {
   width: 100%; /* Take full width */
   text-align: center; /* Center the pagination */
   margin-top: 2%;
+  margin-left: 80%;
 }
 
 .pagination {
@@ -215,6 +214,7 @@ tbody tr {
 .wrapper {
   position: relative;
   left: 0%;
+  margin-left: -10%;
 }
 .search-circle {
   border: 0.1vw solid #080;
@@ -235,13 +235,14 @@ tbody tr {
   border-radius: 3%;
 }
 
-.even-row {
-  background-color: #ede7e7; /* Set the background color for even rows */
+/* .even-row 
+{
+  background-color: #ede7e7; 
 }
 
 .odd-row {
-  background-color: #ffffff; /* Set the background color for odd rows */
-}
+  background-color: #ffffff; 
+} */
 
 
 /* Media queries for smaller screens */

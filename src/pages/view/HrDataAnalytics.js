@@ -14,7 +14,7 @@ const HrDataAnalytics = () => {
   const [popupWidth, setPopupWidth] = useState(400); // Width of the popup
   const [popupHeight, setPopupHeight] = useState(200); // Height of the popup
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
-  const [itemsPerPage, setItemsPerPage] = useState(13); // Items to display per page
+  const [itemsPerPage, setItemsPerPage] = useState(9); // Items to display per page
   const [searchQuery, setSearchQuery] = useState(""); // Search input value
 
   // Refs for DOM elements
@@ -214,9 +214,11 @@ const HrDataAnalytics = () => {
             {/* Table header */}
             <thead>
               <tr>
-                <th>Select</th>
+                <th className="text-black">SELECT</th>
                 {csvData[0].map((header, index) => (
-                  <th key={index}>{header}</th>
+                  <th className="text-black" key={index}>
+                    {header.toUpperCase()}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -255,11 +257,17 @@ const HrDataAnalytics = () => {
                   </td>
                   {/* Display each cell in the row */}
                   {row.map((cell, cellIndex) => (
-                    <td
+                    <td 
                       className={rowIndex % 2 == 0 ? "even-row" : "odd-row"}
                       key={cellIndex}
                     >
-                      {cell}
+                      {(cellIndex === 2 || cellIndex === 3 || cellIndex === 4 || cellIndex === 5 || cellIndex === 7)  ? (
+                        <a href={`https://` + cell} style={{ color: 'blue', textDecoration: 'none' }} 
+                        onMouseOver={(e) => e.target.style.textDecoration = 'underline'} 
+                        onMouseOut={(e) => e.target.style.textDecoration = 'none'}>{cell}</a>
+                      ) : (
+                        cell
+                      )}
                     </td>
                   ))}
                 </tr>

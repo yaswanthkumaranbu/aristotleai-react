@@ -41,18 +41,9 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 35rem;
-    z-index: 5;
+    z-index: 10;
 }
-.notify-inner{
-    position: relative;
-    padding: 36px;
-    width: 60vh;
-    height: 25vh;
-    margin-top: 10rem;
-    margin-right: 3rem;
-    max-width: 40rem; 
-    background-color: rgb(46, 43, 43);
-}
+
 
 .notify-inner h4{
     width: 100%;

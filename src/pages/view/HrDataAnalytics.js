@@ -115,7 +115,7 @@ const HrDataAnalytics = () => {
   };
 
   // Logic for pagination
-  let currentItems = csvData;
+  let currentItems = csvData.slice(1);
 
   if (searchQuery) {
     currentItems = currentItems.filter((row) =>
@@ -124,17 +124,10 @@ const HrDataAnalytics = () => {
   }
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage + 1;
-var paginatedItems = currentItems.slice(
-    indexOfFirstItem,
+  var paginatedItems = currentItems.slice(
+    indexOfFirstItem - 1,
     indexOfLastItem
   );
-
-  if (searchQuery) {
-     paginatedItems = currentItems.slice(
-      indexOfFirstItem - 1,
-      indexOfLastItem
-    );
-  } 
 
   // Pagination Logic
   const pageNumbers = [];

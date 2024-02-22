@@ -6,19 +6,14 @@ import Notify from "../Notify.js";
 import ChatbotComponent from "../../pages/view/LegalAII.js";
 import botcomponent from "../../pages/view/Bot.js";
 import HrDataAnalytics from "../../pages/view/HrDataAnalytics.js";
-import GenerateNotifications from "./Notification.js";
-// import ".././notify.css";
-import "./hrcss.css";
+import './hrcss.css';
+
+
 
 const COMP = () => {
   const [currentMenu, setMenu] = useState("Dashboard");
   const [buttonPopup, setButtonPopup] = useState(false);
   const [notify, setNotify] = useState(false);
-  const [dark, setDark] = useState(false);
-
-  // const toggleDark = () => {
-  //   setDark(!dark);
-  // };
 
   useEffect(() => {
     let curLink = document.location.pathname;
@@ -40,7 +35,7 @@ const COMP = () => {
   });
 
   return (
-    <div>
+    <>
       <nav
         id="sidebarMenu"
         className="sidebar d-lg-block bg-gray-800 text-white collapse"
@@ -86,7 +81,7 @@ const COMP = () => {
                         </a>
                       </div>
                     </div>
-                    <ul className="nav flex-column pt-3 pt-md-0 ">
+                    <ul className="nav flex-column pt-3 pt-md-0">
                       <li className="">
                         <a className="nav-link d-flex align-items-center">
                           <span className="sidebar-icon">
@@ -360,6 +355,7 @@ const COMP = () => {
                           currentMenu === "Legal_AI" ? "active" : ""
                         }`}
                       >
+                  
                         <Link
                           to="/view/HrDataAnalytics"
                           className="nav-link d-flex"
@@ -368,16 +364,13 @@ const COMP = () => {
                           }}
                         >
                           <span className="sidebar-icon">
-                            <img
-                              className="hrimg"
+                            <img className="hrimg"
                               src="/assets/icons/hrDataAnalytics.jpg"
                               height="20px"
                               width="20px"
                             />
                           </span>
-                          <span className="sidebar-text">
-                            HR Data Analytics
-                          </span>
+                          <span className="sidebar-text">HR Data Analytics</span>
                         </Link>
                       </li>
 
@@ -473,14 +466,6 @@ const COMP = () => {
               </div>
               {/* Navbar links */}
               <ul className="navbar-nav align-items-center">
-                {/* <li>
-                  <button
-                    className="absolute w-16 h-16 top-16 right -16 bg-gray-900 dark:bg-white rounded-full text-white dark:text-black font-semibold"
-                    onClick={toggleDark}
-                  >
-                    {dark ? "LHT" : "DRK"}
-                  </button>
-                </li> */}
                 <li
                   className="nav-item dropdown"
                   onClick={() => setNotify(!notify)}
@@ -506,9 +491,10 @@ const COMP = () => {
                     <Notify
                       className="itis"
                       trigger={notify}
-                      // setTrigger={setNotify}
-                    ></Notify>
-                    {notify && <GenerateNotifications />}
+                      setTrigger={setNotify}
+                    >
+                      <p>AITrism feature will be enabled in the next release</p>
+                    </Notify>
                   </a>
                   <div className="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0">
                     <div className="list-group list-group-flush">
@@ -713,7 +699,7 @@ const COMP = () => {
                         alt="Image placeholder"
                         src="../../assets/img/team/user.png"
                       />
-                      <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block ">
+                      <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                         <span className="mb-0 font-small fw-bold text-gray-900">
                           Chinnasamy
                         </span>
@@ -822,7 +808,7 @@ const COMP = () => {
         </nav>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 };
 

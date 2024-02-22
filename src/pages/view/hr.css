@@ -47,12 +47,6 @@ body {
   transform: translateX(50%);
 }
 
-
-.container
-{
-  z-index: -1;
-}
-
 .table-container {
   width: 100%; /* Responsive width */
   max-height: 70vh; /* Responsive height */
@@ -89,7 +83,7 @@ tbody tr {
 }
 
 .selected {
-  background-color: rgb(51, 175, 216);
+  font-weight: 1000;
 }
 .popup {
   position: fixed;

@@ -49,11 +49,11 @@ body {
 }
 
 .table-container {
-  width: 130%; /* Responsive width */
+  width: 100%; /* Responsive width */
   max-height: 80vh; /* Responsive height */
   overflow-y:auto;
   position: relative;
-  margin-left: -15%;
+  /* margin-left: -5%; */
   border:5px solid  #cdc9c9;
 
 
@@ -98,40 +98,8 @@ tbody tr {
 .selected {
   font-weight: 1000;
 }
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 0.2vw solid #0c0c0c;
-  width: auto;
-  height: auto;
-  max-height: 100%;
-  z-index: 9999;
-  padding: 2vw;
-  box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.5);
-  border-radius: 1vw;
-}
 
 
-.popup-content {
-  text-align:left;
-}
-
-.popup-title {
-  color: #030303; /* Title color */
-  margin-bottom: 1vw;
-  
-}
-.popup-body {
-  max-height: 20vh;
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: auto; /* Enable horizontal scrolling */
-   /* Prevent wrapping of content */
-  display: flex; /* Use flexbox to ensure proper alignment */
-  
-}
 
 
 .close {
@@ -214,7 +182,7 @@ tbody tr {
 .wrapper {
   position: relative;
   left: 0%;
-  margin-left: -10%;
+  /* margin-left: -10%; */
 }
 .search-circle {
   border: 0.1vw solid #080;
@@ -289,4 +257,3 @@ tbody tr {
     left: 0vw;
   }
 }
-

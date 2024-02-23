@@ -11,11 +11,13 @@ const HrDataAnalytics = () => {
   const [selectedRows, setSelectedRows] = useState([]); // To track selected rows
   const [showPopup, setShowPopup] = useState(false); // To control popup visibility
   const [rowData, setRowData] = useState([]); // To store data for the selected row
-  const [popupWidth, setPopupWidth] = useState(400); // Width of the popup
-  const [popupHeight, setPopupHeight] = useState(200); // Height of the popup
+  const [popupWidth, setPopupWidth] = useState(10); // Width of the popup
+  const [popupHeight, setPopupHeight] = useState(10); // Height of the popup
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
   const [itemsPerPage, setItemsPerPage] = useState(9); // Items to display per page
   const [searchQuery, setSearchQuery] = useState(""); // Search input value
+  
+  const [popupPosition, setPopupPosition] = useState({ x: 300, y: 110 });
 
   // Refs for DOM elements
   const tableRef = useRef(null); // Ref for the table
@@ -43,8 +45,8 @@ const HrDataAnalytics = () => {
   // Calculate and update popup dimensions on row data change or window resize
   useEffect(() => {
     const calculatePopupDimensions = () => {
-      const maxPopupWidth = 400;
-      const maxPopupHeight = 300;
+      const maxPopupWidth = 10;
+      const maxPopupHeight = 10;
       const maxWidth = window.innerWidth * 0.8;
       const maxHeight = window.innerHeight * 0.8;
 
@@ -186,9 +188,17 @@ const HrDataAnalytics = () => {
     padding: "0px 10px",
     fontSize: "8px",
   };
-
+  const closePopup = () => {
+    setShowPopup(false); // Set showPopup state to false to close the popup
+  };
+  const openPopup = (event) => {
+    const buttonRect = event.target.getBoundingClientRect();
+    setPopupPosition({ x: buttonRect.left, y: buttonRect.top + buttonRect.height });
+    setShowPopup(true);
+  };
   // JSX for the component
   return (
+    <div className="tot">
     <div className="container">
       {/* Search input */}
       <div className="wrapper">
@@ -288,27 +298,39 @@ const HrDataAnalytics = () => {
       </div>
       {/* Display the popup if showPopup state is true */}
       {showPopup && (
-        <div
-          className="popup"
-          ref={popupRef}
-          style={{ width: ` ${popupWidth}px`, height: `${popupHeight}px` }}
-        >
-          <div className="popup-content">
-            <h3>Details</h3>
-            {/* Display details of the selected row */}
-            <div className="popup-body">
-              <ul>
-                {rowData.map((data, index) => (
-                  <li key={index}>{data}</li>
-                ))}
-              </ul>
+        <div className="" style={{ position: 'absolute', top: `${popupPosition.y}px`, left: `${popupPosition.x}px` }}>
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-dialog">
+            <div className="modal-content">
+            <div className="modal-content" style={{ boxShadow: '0px 0px 10px rgb(3, 7, 8)' }}>
+              <div className="modal-header">
+                <h5 className="modal-title">Details</h5>
+                <button type="button" className="btn-close" aria-label="Close" onClick={closePopup}></button>
+              </div>
+              <div className="modal-body">
+                {/* Display details of the selected row */}
+                <div className="list-group">
+                  {/* Iterate over the rowData array */}
+                  {rowData.map((data, index) => (
+                    // Render a list item for each data item
+                    <div key={index} className="list-group-item">
+                      <strong className="fw-bold">{csvData[0][index]}:</strong> {data}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
-  );
-};
-
-// Exporting the component
-export default HrDataAnalytics;
+      </div>
+      </div>
+     
+      
+       )}
+     </div>
+     </div>
+   );
+ };
+ 
+ // Exporting the component
+ export default HrDataAnalytics;

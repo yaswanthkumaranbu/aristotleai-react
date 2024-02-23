@@ -1,5 +1,5 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
-import React, { Component, useState, useEffect ,useRef} from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import CharacterList from "../CharacterAI/CharacterLIst";
 import Popup from "../Popup.js";
 import Notify from "../Notify.js";
@@ -7,34 +7,31 @@ import ChatbotComponent from "../../pages/view/LegalAII.js";
 import botcomponent from "../../pages/view/Bot.js";
 import HrDataAnalytics from "../../pages/view/HrDataAnalytics.js";
 import GenerateNotifications from "../GenerateNotifications.js";
-import './hrcss.css';
-
-
-
+import "./hrcss.css";
 
 const COMP = () => {
   const [currentMenu, setMenu] = useState("Dashboard");
   const [buttonPopup, setButtonPopup] = useState(false);
   const [notify, setNotify] = useState(false);
 
-
   const notificationRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target)
+      ) {
         setNotify(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
-
 
   useEffect(() => {
     let curLink = document.location.pathname;
@@ -51,6 +48,9 @@ const COMP = () => {
       "/view/CharacterAi": "Character",
       "/view/LegalAII": "Legal_AI",
       "/view/HrDataAnalytics": "HR Data Analytics",
+      "/view/Charts": "Charts",
+      "/view/ChangeLog": "ChangeLog",
+      "/view/Activity": "Activity",
     };
     linkObj[curLink] ? setMenu(linkObj[curLink]) : "Dashboard";
   });
@@ -59,7 +59,7 @@ const COMP = () => {
     <>
       <nav
         id="sidebarMenu"
-        className="sidebar d-lg-block bg-gray-800 text-white collapse"
+        className="sidebar d-lg-block bg-gray-800 text-white collapse overflow-hidden"
         data-simplebar="init"
       >
         <div className="simplebar-wrapper" style={{ margin: 0 }}>
@@ -73,7 +73,7 @@ const COMP = () => {
                 tabIndex={0}
                 role="region"
                 aria-label="scrollable content"
-                style={{ height: "auto", overflow: "hidden" }}
+                style={{ height: "auto", overflow: "auto" }}
               >
                 <div className="simplebar-content" style={{ padding: 0 }}>
                   <div className="sidebar-inner px-4 pt-3">
@@ -373,10 +373,9 @@ const COMP = () => {
                       </li>
                       <li
                         className={`nav-item ${
-                          currentMenu === "Legal_AI" ? "active" : ""
+                          currentMenu === "HR Data Analytics" ? "active" : ""
                         }`}
                       >
-                  
                         <Link
                           to="/view/HrDataAnalytics"
                           className="nav-link d-flex"
@@ -385,16 +384,88 @@ const COMP = () => {
                           }}
                         >
                           <span className="sidebar-icon">
-                            <img className="hrimg"
+                            <img
+                              className="hrimg"
                               src="/assets/icons/hrDataAnalytics.jpg"
                               height="20px"
                               width="20px"
                             />
                           </span>
-                          <span className="sidebar-text">HR Data Analytics</span>
+                          <span className="sidebar-text">
+                            HR Data Analytics
+                          </span>
+                        </Link>
+                      </li>
+                      <li
+                        className={`nav-item ${
+                          currentMenu === "Charts" ? "active" : ""
+                        }`}
+                      >
+                        <Link
+                          to="/view/Charts"
+                          className="nav-link d-flex"
+                          onClick={(e) => {
+                            setMenu("Change Log");
+                          }}
+                        >
+                          <span className="sidebar-icon">
+                            <img
+                              className="hrimg"
+                              src="/assets/icons/chat.png"
+                              height="20px"
+                              width="20px"
+                            />
+                          </span>
+                          <span className="sidebar-text">Chart</span>
+                        </Link>
+                      </li>
+                      <li
+                        className={`nav-item ${
+                          currentMenu === "ChangeLog" ? "active" : ""
+                        }`}
+                      >
+                        <Link
+                          to="/view/ChangeLog"
+                          className="nav-link d-flex"
+                          onClick={(e) => {
+                            setMenu("Change Log");
+                          }}
+                        >
+                          <span className="sidebar-icon">
+                            <img
+                              className="hrimg"
+                              src="/assets/icons/log.png"
+                              height="20px"
+                              width="20px"
+                            />
+                          </span>
+                          <span className="sidebar-text">Change Log</span>
                         </Link>
                       </li>
 
+                      <li
+                        className={`nav-item ${
+                          currentMenu === "Activity" ? "active" : ""
+                        }`}
+                      >
+                        <Link
+                          to="/view/Activity"
+                          className="nav-link d-flex"
+                          onClick={(e) => {
+                            setMenu("Activity");
+                          }}
+                        >
+                          <span className="sidebar-icon">
+                            <img
+                              className="hrimg"
+                              src="/assets/icons/activity1.png"
+                              height="20px"
+                              width="20px"
+                            />
+                          </span>
+                          <span className="sidebar-text">Activity</span>
+                        </Link>
+                      </li>
                       <li
                         role="separator"
                         className="dropdown-divider mt-4 mb-3 border-gray-700"
@@ -487,36 +558,36 @@ const COMP = () => {
               </div>
               {/* Navbar links */}
               <ul className="navbar-nav align-items-center">
-              <li className="nav-item dropdown">
-      <a
-        className="nav-link text-dark notification-bell unread dropdown-toggle"
-        data-unread-notifications="true"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        data-bs-display="static"
-        aria-expanded="false"
-        onClick={() => setNotify(!notify)}
-      >
-        <svg
-          className="icon icon-sm text-gray-900"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-        </svg>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link text-dark notification-bell unread dropdown-toggle"
+                    data-unread-notifications="true"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-expanded="false"
+                    onClick={() => setNotify(!notify)}
+                  >
+                    <svg
+                      className="icon icon-sm text-gray-900"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                    </svg>
 
-        <Notify
-          className="itis"
-          trigger={notify}
-          // setTrigger={setNotify}
-          ref={notificationRef}
-        >
-          <GenerateNotifications />
-        </Notify>
-      </a>
-         <div className="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0">
+                    <Notify
+                      className="itis"
+                      trigger={notify}
+                      // setTrigger={setNotify}
+                      ref={notificationRef}
+                    >
+                      <GenerateNotifications />
+                    </Notify>
+                  </a>
+                  <div className="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0">
                     <div className="list-group list-group-flush">
                       <a
                         href="#"

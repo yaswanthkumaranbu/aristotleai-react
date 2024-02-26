@@ -42,12 +42,12 @@ Step 6 [Get latest changes ]  -- before work
 
 
 To change the name of Aristotle AI to desired name in login page
->>>>>>Navigate to aristotleai/src/pages/Login.js
->>>>>>change the Label to the desired name
+Navigate to aristotleai/src/pages/Login.js
+change the Label to the desired name
 
 To change the name of Aristotle name in navigation bar 
->>>>>> Navigate to aristotleai/src/component/AdminLayout/AdminLayout.js
->>>>>><span className="mt-1 ms-1 sidebar-text">
+Navigate to aristotleai/src/component/AdminLayout/AdminLayout.js
+<span className="mt-1 ms-1 sidebar-text">
                             Chimera AI
           
                 </span>

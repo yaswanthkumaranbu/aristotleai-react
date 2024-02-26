@@ -4,7 +4,7 @@ import React from "react";
 
 const ActivityContainer = () => {
   return (
-    <div className="container mt-4 ">
+    <div className="container mt-4 mb-7 text-black">
       <div className="bg-white p-4 rounded shadow border border-warning">
         <h4 className="mb-5">Recent activity across all projects</h4>
 

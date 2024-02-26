@@ -1,4 +1,7 @@
 
+body{
+  overflow:auto;
+}
 .notification-ui_dd {
     padding: 0;
     border-radius: 10px;
@@ -78,6 +81,7 @@
   }
   
   .notification-list_detail p {
+    color: #282c34;
     margin-bottom: 5px;
     line-height: 1.2;
   }

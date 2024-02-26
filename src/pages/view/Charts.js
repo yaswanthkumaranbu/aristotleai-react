@@ -77,16 +77,16 @@ const lineChartData = {
 export default class App extends React.Component {
   render() {
     return (
-      <div className="container mt-4">
+      <div className="container mt-3">
   {/* Include Bootstrap CSS */}
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
  <div className="row">
   {/* Bar Chart */}
 
   
-  <div className="col-md-8">
+  <div className="col-md-7">
   <div className="chart-container max-w-10">
-          <canvas className="max-w-100" id="chartjs-bar-chart" width="150" height="10"></canvas>
+          <canvas className="max-w-100" id="chartjs-bar-chart" width="100" height="10"></canvas>
         </div>
     <div className="card border-5 shadow rounded-lg">
       <div className="card-body">
@@ -109,6 +109,7 @@ export default class App extends React.Component {
       </div>
     </div>
   </div>
+  
   
   {/* Pie Chart */}
   <div className="col-md-4">
@@ -143,7 +144,7 @@ export default class App extends React.Component {
       </div>
     </div>
   </div>
-</div>
+
 
 
 
@@ -152,10 +153,10 @@ export default class App extends React.Component {
 
 
     {/* Render Line chart */}
-    <div className="col-md-14">
+    <div className="col-md-11">
     
-      <div className="chart-container max-w-35">
-      <canvas class="max-w-800" id="chartjs-line-chart" width="318" height="50"></canvas>
+      <div className="chart-container max-w-11">
+      <canvas class="max-w-800" id="chartjs-line-chart" width="800" height="50"></canvas>
       <div className="card border-5 shadow rounded-lg">
       <div className="card">
       <div className="card-body">
@@ -177,6 +178,7 @@ export default class App extends React.Component {
              
             }}
           />
+          </div>
           </div>
         </div>
       </div>

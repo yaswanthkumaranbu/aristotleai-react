@@ -115,7 +115,8 @@ const Page = () => {
   name: String,
   mail:String,
   summarize: String,
-) {
+) 
+{
   return { name,mail,summarize};
 }
 

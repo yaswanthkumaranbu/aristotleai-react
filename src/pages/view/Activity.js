@@ -1,11 +1,29 @@
 // React Component
 
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import useTheme from "../../context";
 
 const ActivityContainer = () => {
+  const { theme, darkTheme, lightTheme, violetTheme } = useTheme();
+  const [color, setColor] = useState("tw-bg-white");
+
+  useEffect(() => {
+    if (theme == "dark") setColor("bg-gray-800");
+    else if (theme == "light") setColor("tw-bg-white");
+    else if (theme == "violet") setColor("tw-bg-purple-950");
+    else if (theme == "cyan") setColor("tw-bg-cyan-950");
+    else if (theme == "blue") setColor("tw-bg-blue-950");
+    else if (theme == "lime") setColor("tw-bg-lime-950");
+  }, [theme]);
+
+  // console.log(theme);
+
   return (
-    <div className="container mt-4 mb-7 text-black">
-      <div className="bg-white p-4 rounded shadow border border-warning">
+    <div
+      className={color + "  mt-7 mb-7  rounded shadow border border-warning "}
+      // id={theme}
+    >
+      <div className=" p-4 ">
         <h4 className="mb-5">Recent activity across all projects</h4>
 
         <div className="row ">

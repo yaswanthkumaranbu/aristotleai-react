@@ -1,10 +1,7 @@
 // App.jsx
 import React, { useState } from "react";
-<<<<<<< HEAD
+
 import "./price.css";
-=======
- import "./price.css";
->>>>>>> 60540af16c535c48a7f439c42655d7552fad35b6
 
 function App() {
   const [showMonthly, setShowMonthly] = useState(false);
@@ -18,7 +15,7 @@ function App() {
   };
 
   return (
-    <div className="container-sam ">
+    <div className=" mt-7 container-sam ">
       <h1 className="ex">Pricing</h1>
       <div className="button-container-sam">
         <button

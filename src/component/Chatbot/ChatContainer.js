@@ -1,12 +1,12 @@
 // ChatContainer.js
-import React, { useState, useRef,useEffect } from 'react';
-import './chatcss.css';
-import { ChatContainer, ChatInput } from '../../component/ChatRoom';
-import ApiService from '../../service/Api.service';
-import AndroidIcon from '@material-ui/icons/Android';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRobot, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import Button from '@mui/material/Button';
+import React, { useState, useRef, useEffect } from "react";
+import "./chatcss.css";
+import { ChatContainer, ChatInput } from "../../component/ChatRoom";
+import ApiService from "../../service/Api.service";
+import AndroidIcon from "@material-ui/icons/Android";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRobot, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import Button from "@mui/material/Button";
 import { Avatar, Fade } from "@mui/material";
 const ChatsContainer = () => {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ const ChatsContainer = () => {
 
   const handleInputSubmit = async (e) => {
     e.preventDefault();
-    if (inputRef.current.value === '') return;
+    if (inputRef.current.value === "") return;
 
     const userMessage = inputRef.current.value;
 
@@ -23,29 +23,29 @@ const ChatsContainer = () => {
     setData((cr) => [
       ...cr,
       {
-        from: 'user',
+        from: "user",
         message: userMessage,
       },
     ]);
 
     // Clear the input field
-    inputRef.current.value = '';
+    inputRef.current.value = "";
 
     // Fetch response from the chatbot API
-    let gaiRes = await ApiService.httpGet('/gai/chat?q=' + userMessage);
+    let gaiRes = await ApiService.httpGet("/gai/chat?q=" + userMessage);
 
     // Update state with chatbot's response
     setData((cr) => [
       ...cr,
       {
-        from: 'llm',
+        from: "llm",
         message: gaiRes,
       },
     ]);
   };
 
   const onEnterPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleInputSubmit(e);
     }
   };
@@ -55,31 +55,64 @@ const ChatsContainer = () => {
   }, [data]);
 
   return (
-    <div className="ChatContainer" style={{ backgroundColor: '#ffffff', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
-      <div className="chat-header">
-        <div style={{ display: 'flex', marginLeft: '20px', position: 'relative' }}>
-          <div className="icon-circle">
-            <FontAwesomeIcon icon={faRobot} size="1x" />
-          </div>
-          <div className="active-indicator"></div>
+    <div
+      id="chat-container"
+      class="container bg-white pt-3 text-white mt-5 rounded shadow "
+      style={{ width: "500px" }}
+    >
+      <div class="row px-4">
+        <div class="col-8 p-0">
+          <h2 class="text-primary">
+            <i class="fas fa-comment-dots"></i>
+            Aristotle Genie
+          </h2>
         </div>
-
-        <h4>Aristotle Genie</h4>
+        <div class="col text-right pr-0">
+          <i class="close-button far fa-times-circle"></i>
+        </div>
+        <hr class="col-12 mb-0"></hr>
       </div>
-      <div className="chat-body" ref={chatBodyRef} style={{ overflowY: 'auto', maxHeight: '300px' }}>
+      {/* <div style={{ display: 'flex', marginLeft: '10px', position: '' }}>
+        
+          <div className="icon-circle">
+          
+            <FontAwesomeIcon icon={faRobot} size="1x" />
+            
+            <div className="active-indicator">
+          </div>  
+             
+      
+      <span class="text">Ask us Anything-we'll get back here</span>
+      </div>
+       </div> */}
+
+      <div
+        className="chat-body"
+        ref={chatBodyRef}
+        style={{
+          overflowY: "auto",
+          maxHeight: "350px",
+          width: "500px",
+          position: "fixed",
+        }}
+      >
         <ChatContainer chatdata={data} />
       </div>
-      <div className="input-container">
+      <div className="input-container  " style={{ marginTop: "400px" }}>
         <input
           type="text"
           className="text-input"
           ref={inputRef}
           placeholder="Ask a Question"
-          style={{ color: 'black' }}
+          style={{ color: "#53aef2" }}
           onKeyDown={onEnterPress}
         />
+
         <Button onClick={handleInputSubmit}>
-          <FontAwesomeIcon icon={faPaperPlane} style={{ fontSize: '20px', color: '#1f2937' }} />
+          <FontAwesomeIcon
+            icon={faPaperPlane}
+            style={{ fontSize: "20px", color: "#53aef2" }}
+          />
         </Button>
       </div>
     </div>

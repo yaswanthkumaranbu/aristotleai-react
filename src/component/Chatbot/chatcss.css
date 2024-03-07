@@ -1,49 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 
 
+
 .ChatContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 75vh;
-  border-radius: 14px;
-  border: 3px solid black;
+  width: 60vh;
+  border-radius: 10px;
+  border: 3px solid rgb(172, 172, 172);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.836);
   margin-top: 2rem;
   margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 30px;
 }
 
 .chat-header {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center horizontally */
   width: 100%;
-  text-align: left;
-  height: 8vh;
-  color: white;
+  height: 9%;
+  color: rgb(0, 0, 0);
   border-radius: 10px 10px 0px 0px;
-  background-color: #1f2937;
+  background-color: #ffffff00;
+  margin-left: 20px;
 }
 
-.chat-header h4 {
-  color: white;
-  margin-left: 3rem;
-  align-items: center;
+.chat-header h6 {
+  color: rgb(225, 5, 5);
   margin-right: 20px;
   font-family: 'Quattrocento Sans';
   font-size: 25px;
-  
 }
 
 .chat-header h5 {
-  color: white;
-  margin-left: 3rem;
+  color: rgb(255, 255, 255);
   cursor: default;
   font-family: 'Quattrocento Sans';
+  
 }
 
+
 .chat-body {
-  width: 45vh;
+  width: 59vh;
   max-height: 52vh;
-  overflow: auto;
+  overflow:auto;
 }
 
 .chat-body::-webkit-scrollbar {
@@ -51,16 +55,35 @@
 }
 
 .icon-circle {
-  border-radius: 40%;
-  border: 2px solid white;
+  width: 60px; /* Adjust the width to increase the size */
+  height: 60px; /* Adjust the height to increase the size */
+  border-radius: 50%; /* Ensure the border radius makes a perfect circle */
+  margin-top: 7rem;
+  margin-left: -9rem;
+  border: 2px solid rgb(0, 0, 0);
   padding: 5px;
-  display: inline-block;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  
+  
+  /* Center vertically */
 }
+.text {
+  display: flex;
+  margin-top: 20px; 
+  margin-left: 40px;
+  
+  /* Adjust the spacing between the icon and the text */
+  font-size: 14px; /* Adjust the font size of the text */
+}
+
+
 
 .active-indicator {
   position: absolute;
-  top: 70%;
-  right: 0;
+  top: 40%;
+  right: -40%;
   width: 8px;
   height: 8px;
   background-color: green;
@@ -72,19 +95,23 @@
   justify-content: space-between;
   align-items: center;
   margin: 6px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0,0);
+  margin: bottom 7px;;
 }
 
 .text-input {
   flex: 1;
   padding: 8px;
-  border: 2px solid black;
+  border: 2px solid rgba(169, 166, 166, 0.44);
   border-radius: 5px;
   margin-right: 0px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.816);
 }
 
 .text-input:focus {
   outline: none;
-  border-color:black;
+  border-color:rgb(0, 0, 0);
 }
 
 .tw-text-quattrocento-sans {
@@ -154,3 +181,10 @@
  .shake-effect {
   animation: shake 1s;
  }
+
+
+ .container {
+  width: 540px;
+  height: 540px;
+  overflow: auto;
+}

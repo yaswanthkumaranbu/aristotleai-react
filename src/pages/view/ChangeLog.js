@@ -1,6 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import useTheme from "../../context";
 
 function Changelog() {
+  const { theme } = useTheme();
+
+  const [color, setColor] = useState("bg-gray-800");
+
+  useEffect(() => {
+    if (theme == "dark") setColor("bg-gray-800");
+    else if (theme == "light") setColor("bg-gray-800");
+    else if (theme == "violet") setColor("bg-gray-800");
+    else if (theme == "cyan") {
+      setColor("bg-gray-800");
+    } else if (theme == "blue") {
+      setColor("bg-gray-800");
+    } else if (theme == "lime") {
+      setColor("bg-gray-800");
+    }
+  }, [theme]);
+
   const changes = [
     {
       version: "1.15.0 - Eurus",
@@ -163,11 +181,11 @@ function Changelog() {
   const [selectedVersion, setSelectedVersion] = useState(null);
 
   return (
-    <div className="container py-5 mb-7">
+    <div className=" mt-7 py-5 mb-7">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card shadow">
-            <div className="card-header bg-primary text-white">
+            <div className={`${color}` + " card-header  text-white"}>
               <h2 className="card-title mb-0">Changelog</h2>
             </div>
             <div className="card-body">
@@ -197,7 +215,7 @@ function Changelog() {
                         <span className="badge bg-secondary me-2">
                           Version {change.version}
                         </span>
-                        {change.date}
+                        <span className="text-black">{change.date}</span>
                       </button>
                     </h2>
                     <div
@@ -223,13 +241,16 @@ function Changelog() {
                                     {/* Add a span around the item after semicolon */}
                                     {item.includes(":") ? (
                                       <>
-                                        {item.split(":")[0]}:
+                                        <span className="text-black">
+                                          {item.split(":")[0]}
+                                        </span>
+                                        :
                                         <span className="text-danger">
                                           {item.split(":")[1]}
                                         </span>
                                       </>
                                     ) : (
-                                      item
+                                      <span className="text-black">{item}</span>
                                     )}
                                   </li>
                                 ))}

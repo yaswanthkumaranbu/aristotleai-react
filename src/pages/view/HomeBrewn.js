@@ -21,6 +21,7 @@ export default function ChatRoom() {
       },
     ]);
 
+    inputref.current.value = "";
     let gaiRes = await ApiService.httpGet("/gai/chat?q=" + data);
 
     setData((cr) => [
@@ -30,7 +31,6 @@ export default function ChatRoom() {
         message: gaiRes,
       },
     ]);
-    inputref.current.value = "";
   };
 
   const bottomref = useRef(null);

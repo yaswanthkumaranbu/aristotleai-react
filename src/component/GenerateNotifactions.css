@@ -1,6 +1,14 @@
 
-body{
-  overflow:auto;
+body {
+  overflow:hidden;
+}
+body {
+  overflow: auto;
+}
+
+.notification-ui_dd:hover
+{
+  overflow: auto;
 }
 .notification-ui_dd {
     padding: 0;
@@ -10,14 +18,15 @@ body{
     border: 0;
     max-width: 400px;
     max-height: 400px;
-    overflow-y: auto;
+    overflow-y: hidden;
     width: 400px;
     margin: auto;
     margin-top: 50px;
-    position: relative; /* Added */
+    position: relative; 
     top: 150px;
     background-color: rgb(230, 240, 238);
   }
+
   
    .expanded {
     padding: 0;
@@ -30,7 +39,7 @@ body{
     width: 400px;
     margin: auto;
     margin-top: 50px;
-    position: relative; /* Added */
+    position: relative; 
   }
   
   .notification-ui_dd-header {
@@ -57,7 +66,8 @@ body{
   }
   
   .notification-list:hover {
-    background-color: #f5f5f5;
+    /* background-color: #f2ecec; */
+    padding: 10px;
   }
   
   .notification-list--unread {
@@ -99,11 +109,11 @@ body{
   }
   
   .notification-ui_dd-footer {
-    position: sticky; /* Added */
-    bottom: 0; /* Added */
-    background-color: white; /* Added */
-    padding: 15px; /* Added */
-    z-index: 1; /* Added */
+    position: sticky; 
+    bottom: 0; 
+    /* background-color: white;  */
+    padding: 15px; 
+    z-index: 1; 
   }
   
   

@@ -38,6 +38,7 @@ export default function CharacterChat() {
       },
     ]);
 
+    inputref.current.value = "";
     let gaiRes = await axios.get(`http://localhost:8000/bedrock/${data}`);
     let response = gaiRes;
     console.log("data from bed", response["data"]);
@@ -48,7 +49,6 @@ export default function CharacterChat() {
         message: response.data.completion,
       },
     ]);
-    inputref.current.value = "";
   };
 
   const bottomref = useRef(null);
@@ -59,7 +59,7 @@ export default function CharacterChat() {
   //TODO add a fab to scroll up to the top
   return (
     <themeContext.Provider value={{ theme }}>
-      <div id={theme} >
+      <div id={theme}>
         <COMP />
         <div className="tw-w-full tw-h-[100vh] tw-relative tw-flex tw-flex-col">
           <div className="tw-flex tw-flex-col tw-min-h-[100vh] tw-overflow-y-auto tw-pb-32 tw-scrollbar-thin tw-scrollbar-thumb-gray-600 tw-scrollbar-track-theme-black tw-scrollbar-thumb-rounded-md">

@@ -6,7 +6,7 @@ import useTheme from "../../context";
 Chart.register(...registerables);
 
 const App = () => {
-  const { theme, darkTheme, lightTheme, violetTheme } = useTheme();
+  const { theme } = useTheme();
   const [color, setColor] = useState("tw-bg-white");
 
   useEffect(() => {

@@ -71,9 +71,16 @@ function GenerateNotifications() {
 
   return (
     <div
-      className={` ${expanded ? "expanded" : "notification-ui_dd"}`}
+      className={"container1"+` ${expanded ? "expanded" : "notification-ui_dd"}`}
       //   id={theme}
     >
+      <style>
+        {`
+          .container1::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
       <div className={`${color}` + " notification-ui_dd-header"}>
         <h3 className={`${colortext}` + " text-start"}>Notification</h3>
       </div>

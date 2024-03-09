@@ -4,17 +4,8 @@ import useTheme from "../../context";
 
 export default function ChatContainer({ chatdata, image, userImage }) {
   // TODO: interactive text typing
-  if (chatdata.length === 0) {
-    return (
-      <div className="tw-flex tw-justify-center tw-items-center tw-flex-1">
-        {/* <h1 className='tw-text-2xl tw-text-gray-500 tw-font-bold'>LLM Chat Bot</h1> */}
-      </div>
-    );
-  }
-
   const [color, setColor] = useState("");
   const [colorReply, setColorReply] = useState("");
-
   const { theme } = useTheme();
   useEffect(() => {
     if (theme == "dark") {
@@ -38,9 +29,25 @@ export default function ChatContainer({ chatdata, image, userImage }) {
     }
   }, [theme]);
 
+  if (chatdata.length === 0) {
+    return (
+      <div className="tw-flex tw-justify-center tw-items-center tw-flex-1 tw-flex-col">
+        <img src={image} alt="" style={{ width: 100, height: 100 }} />
+        <h1
+          className={
+            `${theme == "light" ? "tw-text-gray-500" : ''}` +
+            " tw-text-2xl tw-font-bold"
+          }
+        >
+          How can I help you today?
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="container1 tw-flex-col tw-mr-7 mx-auto "
+      className="container1 tw-flex-col tw-mr-7 "
       style={{ overflowY: "auto" }}
     >
       <style>
@@ -54,7 +61,7 @@ export default function ChatContainer({ chatdata, image, userImage }) {
         <Fade in={true} timeout={800} key={i}>
           <div
             className={`tw-flex tw-w-fit tw-p-4 tw-items-center ${
-              chat.from !== "llm" ? "tw-flex-row-reverse tw-float-right" : ""
+              chat.from !== "llm" ? "tw-flex-row-reverse tw-float-right " : ""
             }`}
           >
             <div className="tw-mr-4">
@@ -65,25 +72,26 @@ export default function ChatContainer({ chatdata, image, userImage }) {
               />
             </div>
             <div
-              className={`tw-flex tw-w-[160px] tw-h-[90px] tw-p-4 tw-mr-3 tw-rounded-xl ${
+              className={`tw-flex tw-w-[160px] tw-h-[90px] tw-p-4 tw-mr-3  tw-rounded-xl ${
                 chat.from !== "llm"
-                  ? color + " tw-text-right  text-white "
-                  : colorReply + " tw-text-left  text-white tw-mr-10"
+                  ? color + " tw-text-left  text-white "
+                  : colorReply + " tw-text-left  text-white "
               } tw-text-black font-Roboto`}
               style={{
                 top: chat.from === "llm" ? "50px" : "50px",
-                marginTop: chat.from === "llm" ? "70px" : "0",
+                marginTop: chat.from === "llm" ? "80px" : "0px",
                 borderRadius: "20px", // Adding a fixed border-radius value
                 border:
                   chat.from !== "llm" ? "2px solid black" : "2px solid black", // Conditional border
                 height: chat.from === "llm" ? "auto" : "auto",
                 width: chat.from === "llm" ? "auto" : "auto",
+                maxWidth: chat.from === "llm" ? "73%" : "75%",
               }}
             >
               <p className="tw-mb-2 tw-text-quattrocento-sans">
                 {chat.message}
               </p>
-              <div
+              {/* <div
                 className={`tw-absolute ${
                   chat.from === "llm" ? "tw-left-0" : "tw-right-0"
                 } tw-top-0 tw-border-t-1 tw-border-r-4 tw-border-black tw-w-0 tw-h-0 tw-transform tw-translate-x-1/2 tw-translate-y-1/2`}
@@ -91,7 +99,7 @@ export default function ChatContainer({ chatdata, image, userImage }) {
                   transform: "translate(-50%, -50%)",
                   borderRadius: "20px",
                 }}
-              ></div>
+              ></div> */}
             </div>
           </div>
         </Fade>

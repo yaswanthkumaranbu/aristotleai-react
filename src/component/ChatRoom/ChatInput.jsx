@@ -28,14 +28,14 @@ export default function ChatInput({ input, handleSubmit }) {
     <div
       // id={theme}
       className="tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-bg-gradient-to-b tw-from-transparent tw-from-40%  tw-flex tw-justify-center tw-items-center  "
-    >
+        >
       <form
         className={
           `${color}` +
           " tw-flex tw-justify-evenly tw-items-center tw-h-[60px]  tw-my-4  tw-p-2 tw-gap-2 tw-rounded-lg tw-max-w-xl tw-w-[90%] "
         }
         style={{
-          boxShadow: "2px 2px 9px #F4AAB9",
+          // boxShadow: "2px 2px 9px #F4AAB9",
         }}
         onSubmit={handleSubmit}
       >

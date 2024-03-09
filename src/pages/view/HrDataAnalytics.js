@@ -60,7 +60,7 @@ const App = () => {
 
   return (
     <div
-      className={color + " mt-7 mb-6"}
+      className={color + " mt-7 mb-6 "}
       style={{ height: 600, fontFamily: "sans-serif" }}
     >
       <AgGridReact

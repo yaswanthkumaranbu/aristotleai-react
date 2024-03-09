@@ -27,7 +27,6 @@ const Button = ({ color, onClickFunction }) => (
       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1)",
       transition: "transform 0.2s ease-in-out",
       outline: "none", // Remove focus outline
-      boxShadow: "1px 2px 9px #F4AAB9",
     }}
     onClick={onClickFunction}
   />
@@ -106,7 +105,6 @@ const COMP = () => {
 
   useEffect(() => {
     let curLink = document.location.pathname;
-    // let curMenu = currentMenu;
     let linkObj = {
       "/view/gpt": "GPT",
       "/view/Vertex": "Vertex",
@@ -143,7 +141,7 @@ const COMP = () => {
     }
   }, [theme]);
 
-  console.log(colorq);
+  // console.log(colorq);
   const [sidebar, setSidebar] = useState(true);
   const handlesideClick = () => {
     setSidebar(!sidebar);
@@ -174,7 +172,7 @@ const COMP = () => {
             transition:
               "background-color 0.5s ease, color 0.5s ease, width 0.5s",
             width: `${sidebar ? "" : "0px"}`,
-            boxShadow: "1px 2px 9px #F4AAB9",
+            boxShadow: "0 0 10px #000",
           }}
         >
           <div className="simplebar-wrapper" style={{ margin: 0 }}>
@@ -280,14 +278,11 @@ const COMP = () => {
                             }}
                           >
                             <span className="sidebar-icon">
-                              <svg
-                                className="icon icon-xs me-2"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                              </svg>
+                              <img
+                                src="/assets/icons/homebrewn.svg"
+                                height="20px"
+                                width="20px"
+                              />
                             </span>
                             <span className="sidebar-text">Home Brewn</span>
                           </Link>
@@ -793,9 +788,9 @@ const COMP = () => {
           </button> */}
           <nav
             className={
-              colorq +
               " navbar navbar-top navbar-expand navbar-dashboard navbar-dark"
             }
+            id={theme}
             style={{
               // backgroundColor: "black",
               position: "fixed",
@@ -804,7 +799,7 @@ const COMP = () => {
               borderRadius: "0%",
               left: 0,
               zIndex: 1,
-              boxShadow: "1px 2px 9px #F4AAB9",
+              boxShadow: "0 0 10px #000",
             }}
           >
             <div className=" container-fluid px-0">
@@ -842,7 +837,7 @@ const COMP = () => {
                         <i
                           className="fa-solid fa-sun fa-fw fa-xl margin-right-md fa-spin"
                           style={{
-                            color: "white",
+                            color: "",
                             " --fa-animation-duration": "1s",
                           }}
                         ></i>
@@ -950,7 +945,13 @@ const COMP = () => {
                           src="../../assets/img/team/user.png"
                         />
                         <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                          <span className="mb-0 font-small fw-bold text-white">
+                          <span
+                            className={
+                              theme == "light"
+                                ? "tw-text-black"
+                                : "text-white" + " mb-0 fw-bold"
+                            }
+                          >
                             Chinnasamy
                           </span>
                         </div>

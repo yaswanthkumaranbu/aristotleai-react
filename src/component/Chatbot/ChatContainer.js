@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { Avatar, Fade } from "@mui/material";
 const ChatsContainer = () => {
   const [data, setData] = useState([]);
+  const [show, setShow] = useState(false);
   const inputRef = useRef(null);
   const chatBodyRef = useRef(null);
 
@@ -46,6 +47,7 @@ const ChatsContainer = () => {
 
   const onEnterPress = (e) => {
     if (e.key === "Enter") {
+      setShow(true);
       handleInputSubmit(e);
     }
   };
@@ -96,7 +98,7 @@ const ChatsContainer = () => {
           position: "fixed",
         }}
       >
-        <ChatContainer chatdata={data} />
+        {show ? <ChatContainer chatdata={data} /> : <></>}
       </div>
       <div className="input-container  " style={{ marginTop: "400px" }}>
         <input

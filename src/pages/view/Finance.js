@@ -10,7 +10,7 @@ export default function ChatRoom() {
   const inputref = useRef(null);
   //const [view,setview] = useState(false)
 
-  const handleInputSubmit = async (e) => {
+  const   handleInputSubmit = async (e) => {
     setShow(true);
     e.preventDefault();
     console.log(inputref.current.value);
@@ -37,7 +37,7 @@ export default function ChatRoom() {
   };
 
   const bottomref = useRef(null);
-  useEffect(() => {
+  useEffect(() => { 
     bottomref.current?.scrollIntoView({ behavior: "smooth" });
   }, [data]);
 

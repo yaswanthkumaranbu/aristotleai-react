@@ -12,24 +12,30 @@ import "../view/comp.css";
 export default function ChatRoom() {
   const navigate = useNavigate();
   const handleElon = () => {
-    navigate("/characterai/chat", {
-      state: { name: "Elon Musk", desc: "Hello This is Elon Musk!" },
+    navigate("/characterai/chat?name=Elon Musk&desc=Hello This is Elon Musk!", {
+      // state: { name: "Elon Musk", desc: "Hello This is Elon Musk!" },
     });
   };
   const handleBiden = () => {
-    navigate("/characterai/chat", {
-      state: { name: "JoeBiden", desc: "Hello I'm Joe Biden" },
+    navigate("/characterai/chat?name=JoeBiden&desc=Hello I'm Joe Biden", {
+      // state: { name: "JoeBiden", desc: "Hello I'm Joe Biden" },
     });
   };
   const handleModi = () => {
-    navigate("/characterai/chat", {
-      state: { name: "NarendraModi", desc: "Hello I'm Narendra Modi" },
-    });
+    navigate(
+      "/characterai/chat?name=NarendraModi&desc=Hello I'm Narendra Modi",
+      {
+        // state: { name: "NarendraModi", desc: "Hello I'm Narendra Modi" },
+      }
+    );
   };
   const handleHoong = () => {
-    navigate("/characterai/chat", {
-      state: { name: "Lee Hsien Loong", desc: "Hello I'm Lee Hsien Loong" },
-    });
+    navigate(
+      "/characterai/chat?name=Lee Hsien Loong&desc=Hello I'm Lee Hsien Loong",
+      {
+        // state: { name: "Lee Hsien Loong", desc: "Hello I'm Lee Hsien Loong" },
+      }
+    );
   };
 
   return (

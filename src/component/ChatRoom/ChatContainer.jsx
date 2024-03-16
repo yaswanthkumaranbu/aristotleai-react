@@ -35,7 +35,7 @@ export default function ChatContainer({ chatdata, image, userImage }) {
         <img src={image} alt="" style={{ width: 100, height: 100 }} />
         <h1
           className={
-            `${theme == "light" ? "tw-text-gray-500" : ''}` +
+            `${theme == "light" ? "tw-text-gray-500" : ""}` +
             " tw-text-2xl tw-font-bold"
           }
         >
@@ -85,7 +85,7 @@ export default function ChatContainer({ chatdata, image, userImage }) {
                   chat.from !== "llm" ? "2px solid black" : "2px solid black", // Conditional border
                 height: chat.from === "llm" ? "auto" : "auto",
                 width: chat.from === "llm" ? "auto" : "auto",
-                maxWidth: chat.from === "llm" ? "73%" : "75%",
+                maxWidth: chat.from === "llm" ? "100%" : "90%",
               }}
             >
               <p className="tw-mb-2 tw-text-quattrocento-sans">

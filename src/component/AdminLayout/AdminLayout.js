@@ -80,7 +80,7 @@ const COMP = () => {
     setTheme("lime");
   };
 
-  const [currentMenu, setMenu] = useState("Dashboard");
+  const [currentMenu, setMenu] = useState("Character");
   const [buttonPopup, setButtonPopup] = useState(false);
   const [notify, setNotify] = useState(false);
 

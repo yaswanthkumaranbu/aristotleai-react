@@ -13,17 +13,30 @@ import { useLocation } from "react-router-dom";
 import Chat from "../../component/Chatbot/Chat";
 import axios from "axios";
 import "../../style.css";
+import queryString from "query-string";
 
-export const themeContext = React.createContext({});
+import useTheme from "../../context";
+
+
+
+// export const themeContext = React.createContext({});
 
 export default function CharacterChat() {
-  const [theme, setTheme] = React.useState("light");
+  const { theme, darkTheme, lightTheme, violetTheme } = useTheme();
+  const location = useLocation();
+  const { search } = location;
+  const parsed = queryString.parse(search);
+  console.log(parsed.desc);
+
+  const { name, desc } = parsed;  
+
+  // const [theme, setTheme] = React.useState("light");
 
   // TODO: Implement Redux and improve theme
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const inputref = useRef(null);
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleInputSubmit = async (e) => {
     setShow(true);
@@ -59,17 +72,17 @@ export default function CharacterChat() {
 
   //TODO add a fab to scroll up to the top
   return (
-    <themeContext.Provider value={{ theme }}>
+    // <themeContext.Provider value={{ theme }}>
       <div id={theme}>
         <COMP />
-        <div
-          className="  tw-w-full tw-h-[100vh] tw-relative  tw-flex tw-flex-col"
-        >
+        <div className="  tw-w-full tw-h-[100vh] tw-relative  tw-flex tw-flex-col">
           <div className="tw-flex tw-flex-col tw-min-h-[100vh] tw-overflow-y-auto tw-pb-32 tw-scrollbar-thin tw-scrollbar-thumb-gray-600 tw-scrollbar-track-theme-black tw-scrollbar-thumb-rounded-md">
-            {show ? <ChatHeader initial_model={location.state.name} /> : <></>}
+            {/* {show ? <ChatHeader initial_model={location.state.name} /> : <></>} */}
+            {show ? <ChatHeader initial_model={name} /> : <></>}
             <div style={{ marginLeft: "20rem", marginTop: "5rem" }}>
               <AIChatContainer
-                message={location.state.desc}
+                // message={location.state.desc}
+                message={desc}
                 image="/assets/icons/bedrock.svg"
               />
             </div>
@@ -95,6 +108,6 @@ export default function CharacterChat() {
           </div>
         </div>
       </div>
-    </themeContext.Provider>
+    // </themeContext.Provider>
   );
 }

@@ -131,6 +131,6 @@ function GenerateNotifications() {
   );
 }
 
-export default function App() {
+export default function   App() {
   return <GenerateNotifications />;
 }

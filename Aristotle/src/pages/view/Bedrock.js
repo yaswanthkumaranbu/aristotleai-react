@@ -26,7 +26,7 @@ export default function page() {
     ]);
 
     inputref.current.value = "";
-    let gaiRes = await axios.get(`http://localhost:8000/bedrock/${data}`);
+    let gaiRes = await axios.get(`http://localhost:5004/bedrock/${data}`);
     let response = gaiRes;
     console.log("data from bed", response["data"]);
     setData((cr) => [

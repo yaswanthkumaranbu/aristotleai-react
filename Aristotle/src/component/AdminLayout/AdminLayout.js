@@ -1,15 +1,9 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
 import React, { Component, useState, useEffect, useRef } from "react";
-import CharacterList from "../CharacterAI/CharacterLIst";
 import Popup from "../Popup.js";
 import Notify from "../Notify.js";
-import ChatbotComponent from "../../pages/view/LegalAII.js";
-import botcomponent from "../../pages/view/Bot.js";
-import HrDataAnalytics from "../../pages/view/HrDataAnalytics.js";
-import Activity from "../../pages/view/Activity.js";
 import GenerateNotifications from "../GenerateNotifications.js";
 import "../../style.css";
-import { Dropdown } from "react-bootstrap";
 import { themeContext } from "../../context.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Profile from "../profile.js";
@@ -121,10 +115,13 @@ const COMP = () => {
       "/view/ChangeLog": "ChangeLog",
       "/view/Activity": "Activity",
       "/view/Price": "Price",
-      "/view/BankingBot":"BankingBot",
-      "/view/Documentgpt":"Documentgpt",
-      "/view/RegulatoryBot":"RegulatoryBot",
-      "/view/FinGPT":"FinGPT",
+      "/view/BankingBot": "BankingBot",
+      "/view/Documentgpt": "Documentgpt",
+      "/view/RegulatoryBot": "RegulatoryBot",
+      "/view/FinGPT": "FinGPT",
+      "/view/Rbacllm": "RBAC_LLM",
+      "/view/Rbacllm_clone": "RBAC_LLM_CLONE",
+      "/view/MoE": "MOE",
     };
     linkObj[curLink] ? setMenu(linkObj[curLink]) : "Dashboard";
   });
@@ -586,7 +583,6 @@ const COMP = () => {
                           </Link>
                         </li>
 
-
                         {/* <li
                           className={` ${currentMenu === "Charts" ? "" : ""}`}
                           style={{
@@ -711,7 +707,9 @@ const COMP = () => {
                           </Link>
                         </li> */}
                         <li
-                          className={` ${currentMenu === "BankingBot" ? "" : ""}`}
+                          className={` ${
+                            currentMenu === "BankingBot" ? "" : ""
+                          }`}
                           style={{
                             boxShadow:
                               currentMenu === "BankingBot"
@@ -740,7 +738,9 @@ const COMP = () => {
                           </Link>
                         </li>
                         <li
-                          className={` ${currentMenu === "RegulatoryBot" ? "" : ""}`}
+                          className={` ${
+                            currentMenu === "RegulatoryBot" ? "" : ""
+                          }`}
                           style={{
                             boxShadow:
                               currentMenu === "RegulatoryBot"
@@ -797,9 +797,11 @@ const COMP = () => {
                             <span className="sidebar-text">FinGPT</span>
                           </Link>
                         </li>
-                        
+
                         <li
-                          className={` ${currentMenu === "Documentgpt" ? "" : ""}`}
+                          className={` ${
+                            currentMenu === "Documentgpt" ? "" : ""
+                          }`}
                           style={{
                             boxShadow:
                               currentMenu === "Documentgpt"
@@ -828,6 +830,104 @@ const COMP = () => {
                             <span className="sidebar-text">DocumentGpt</span>
                           </Link>
                         </li>
+
+                        <li
+                          className={` ${currentMenu === "RBAC_LLM" ? "" : ""}`}
+                          style={{
+                            boxShadow:
+                              currentMenu === "RBAC_LLM"
+                                ? "1px 2px 9px #F4AAB9"
+                                : "",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Link
+                            to="/view/Rbacllm"
+                            className="nav-link d-flex"
+                            onClick={(e) => {
+                              setMenu("RBAC_LLM");
+                            }}
+                            style={{ gap: "10px" }}
+                          >
+                            <span className="sidebar-icon">
+                              <img
+                                className="hrimg"
+                                style={{ borderRadius: "100%" }}
+                                src="/assets/icons/rbac.png"
+                                height="20px"
+                                width="20px"
+                              />
+                            </span>
+                            <span className="sidebar-text">AI Governance</span>
+                          </Link>
+                        </li>
+
+                        <li
+                          className={` ${
+                            currentMenu === "RBAC_LLM_CLONE" ? "" : ""
+                          }`}
+                          style={{
+                            boxShadow:
+                              currentMenu === "RBAC_LLM_CLONE"
+                                ? "1px 2px 9px #F4AAB9"
+                                : "",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Link
+                            to="/view/RbacllmClone"
+                            className="nav-link d-flex"
+                            onClick={(e) => {
+                              setMenu("RBAC_LLM_CLONE");
+                            }}
+                            style={{ gap: "10px" }}
+                          >
+                            <span className="sidebar-icon">
+                              <img
+                                className="hrimg"
+                                style={{ borderRadius: "100%" }}
+                                src="/assets/icons/rbac.png"
+                                height="20px"
+                                width="20px"
+                              />
+                            </span>
+                            <span className="sidebar-text">GovernanceAI</span>
+                          </Link>
+                        </li>
+
+                        <li
+                          className={` ${currentMenu === "MOE" ? "" : ""}`}
+                          style={{
+                            boxShadow:
+                              currentMenu === "MOE"
+                                ? "1px 2px 9px #F4AAB9"
+                                : "",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Link
+                            to="/view/MoE"
+                            className="nav-link d-flex"
+                            onClick={(e) => {
+                              setMenu("MOE");
+                            }}
+                            style={{ gap: "10px" }}
+                          >
+                            <span className="sidebar-icon">
+                              <img
+                                className="hrimg"
+                                style={{ borderRadius: "100%" }}
+                                src="/assets/icons/moe.png"
+                                height="20px"
+                                width="20px"
+                              />
+                            </span>
+                            <span className="sidebar-text">
+                              Mixture of Experts
+                            </span>
+                          </Link>
+                        </li>
+
                         <li
                           role="separator"
                           className="dropdown-divider mt-4 mb-3 border-gray-700"

@@ -80,6 +80,7 @@ export default function ChatContainer({ chatdata, image, userImage }) {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Google_Messages_icon_%282022%29.svg/480px-Google_Messages_icon_%282022%29.svg.png"
                 alt="Sender Avatar"
                 className="avatar"
+                style={{maxWidth:100}}
               />
             </div>
             <div

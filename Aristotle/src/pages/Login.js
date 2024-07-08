@@ -45,7 +45,7 @@ const Page = () => {
             >
               <div className="col-12 d-flex align-items-center justify-content-center">
                 <div className="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                  <a href="/index">Explore CRUD APP</a>
+                  {/* <a href="/index">Explore CRUD APP</a> */}
 
                   <div className="text-center text-md-center mb-4 mt-md-0">
                     <img

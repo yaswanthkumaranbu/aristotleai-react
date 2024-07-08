@@ -18,7 +18,7 @@ export default function ChatRoom() {
     inputref.current.value = "";
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/api/answer", {
+      const response = await axios.post("http://127.0.0.1:5002/api/answer", {
         question: userMessage,
       });
       setData((cr) => [...cr, { from: "llm", message: response.data.answer }]);
